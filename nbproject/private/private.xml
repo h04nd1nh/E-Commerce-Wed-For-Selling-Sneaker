@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AddToCart.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/DeleteFromCart.java</file>
+            <file>file:/D:/Project/PSneaker/web/login.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/assets/css/index.css</file>
+            <file>file:/D:/Project/PSneaker/web/checkout.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/CookieDAO.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/LoginControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/index.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/product.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/BrandControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/UserDAO.java</file>
+            <file>file:/D:/Project/PSneaker/web/signup.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/cart.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/ProductDAO.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Product.java</file>
+            <file>file:/D:/Project/PSneaker/web/shop.jsp</file>
+        </group>
+    </open-files>
+</project-private>
