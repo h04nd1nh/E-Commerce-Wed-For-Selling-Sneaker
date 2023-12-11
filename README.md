@@ -2,7 +2,7 @@
 ## E-Commerce Wed Java with MVC architecture
 
 # FRONT-END
-Using Basic HTML,CSS,JS without Framework
+Using Basic HTML,CSS,JS without Framework, Design based on community figma resources: https://www.figma.com/file/WTlKpN05Gmqs65bZisbzOg/ex-iphone-%7C-E-Commerce-Website-Template-(Community)?node-id=0%3A1&mode=dev 
 
 # BACKEND
 Using Java Servlet to handle the service and SQL Server 
