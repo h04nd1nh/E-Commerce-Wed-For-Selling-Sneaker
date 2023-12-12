@@ -18,6 +18,10 @@ Using Java Servlet to handle the service and SQL Server
 ### Shop
 ![image](https://github.com/h04nd1nh/E-Commerce-Wed-For-Selling-Sneaker/assets/77616433/08f27b18-f6bc-4f8b-b440-47fd8b1d4d07)
 
+
+### Product Detail
+![image](https://github.com/h04nd1nh/E-Commerce-Wed-For-Selling-Sneaker/assets/77616433/3a379e6e-8164-4d41-914c-cf278ad5b308)
+
 ### Cart
 ![image](https://github.com/h04nd1nh/E-Commerce-Wed-For-Selling-Sneaker/assets/77616433/b51a75c1-2be4-4b07-80bf-54bffbef49e2)
 
