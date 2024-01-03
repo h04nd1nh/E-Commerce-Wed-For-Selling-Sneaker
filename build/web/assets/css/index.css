@@ -1579,6 +1579,7 @@ footer .copyright {
     display: flex;
     flex-direction: row;
     margin: 60px;
+    justify-content: center;
 
 }
 
@@ -2590,4 +2591,796 @@ footer .copyright {
     font-size: 16px;
     font-weight: 400;
     margin: 0;
+}
+
+
+#navigation-menu {
+    padding: 25px;
+    width: 15vw;
+    height: 100vh;
+    border-right: 2px solid #E4E7E9;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+#navigation-menu img {
+    width: 170px;
+    height: auto;
+}
+
+#navigation-menu ul {
+    list-style-type: none;
+    /* Loại bỏ chấm */
+    padding: 0;
+    /* Loại bỏ đệm mặc định của danh sách */
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#navigation-menu p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3858D6;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+#navigation-menu ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+#navigation-menu ul li a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navigation-menu ul li i {
+    width: 30px;
+}
+
+#navigation-menu ul li a,
+#navigation-menu ul li i {
+    font-size: 18px;
+    color: #8B8E99;
+}
+
+#navigation-menu .active {
+    background-color: #ebebee;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+#navigation-menu .active i,
+#navigation-menu .active a {
+    color: #3858D6;
+}
+
+#content {
+    padding: 25px;
+    width: 85vw;
+}
+
+#content>div>p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #191C1F;
+}
+
+#content .active {
+    display: block;
+}
+
+#content>div {
+    display: none;
+}
+
+#content .dasboard-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.tag-info {
+    display: flex;
+    background-color: #fff;
+    min-width: 32%;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 25px;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag-info p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8B8E99;
+}
+
+.tag-info span {
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #191C1F;
+}
+
+.tag-info i {
+    font-size: 70px;
+    color: #3858D6;
+}
+
+.tag-info img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.tag-info #product-info {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag-info #product-info p {
+    margin: 0;
+    padding: 0;
+}
+
+.tag-info #product-info #product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #191C1F;
+}
+
+#content #products table {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+
+#content #products tr>th:nth-child(1),
+tr>td:nth-child(1) {
+    width: 12%;
+}
+
+#content #products tr>th:nth-child(2),
+tr>td:nth-child(2) {
+    width: 32%;
+}
+
+#content #products tr>th:nth-child(3),
+tr>td:nth-child(3) {
+    width: 15%;
+}
+
+#content #products tr>th:nth-child(3),
+tr>td:nth-child(4) {
+    width: 15%;
+}
+
+#content #products tr>th:nth-child(3),
+tr>td:nth-child(5) {
+    width: 15%;
+}
+
+#content #products tr>th {
+    text-align: left;
+}
+
+#content #products #product-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#content #products #product-name img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+#content #products #button-action button {
+    background-color: #ffffff;
+    /* Màu nền */
+    border: 1px solid #ffffff;
+    /* Màu đường viền */
+    /* color: #000000; */
+    /* Màu chữ, bạn có thể điều chỉnh màu chữ tùy ý */
+    padding: 0px 15px;
+    /* Kích thước nút */
+    font-size: 16px;
+    /* Kích thước chữ */
+    cursor: pointer;
+}
+
+
+#content #products tr>td {
+    border-top: 1px solid #E4E7E9;
+}
+
+#content #products tr>td p {
+    font-size: 16px;
+    font-weight: 550;
+    color: #667085;
+}
+
+#content #products tr>td,
+#content #products tr>th {
+    padding-left: 20px;
+}
+
+#content #products #options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+
+#content #products #options button {
+    align-items: center;
+    background-color: #1B60FF;
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    width: 200px;
+    height: 35px;
+}
+
+#content #products #options button:hover,
+#content #products #options button:focus {
+    background-color: #0A66C2;
+    color: #ffffff;
+}
+
+#content #products #options button:active {
+    background: #0A66C2;
+    color: rgb(255, 255, 255, .7);
+}
+
+#content #products #options button:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+#content #products #pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#content #products #pagination button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Để tạo hình tròn */
+    border: 2px solid #8B8E99;
+    /* Đường viền màu đen, bạn có thể thay đổi màu sắc tùy ý */
+    color: #8B8E99;
+    background-color: #ffffff;
+    /* Màu nền, bạn có thể thay đổi màu sắc tùy ý */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content #products #pagination button:hover {
+    background-color: #3858D6;
+    color: #fff;
+    border: 2px solid #3858D6;
+}
+
+
+#content #products #pagination .active {
+    background-color: #3858D6;
+    color: #fff;
+    border: 2px solid #3858D6;
+}
+
+#content #categories table{
+    width: 50%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+#content #categories tr>th:nth-child(1),
+tr>td:nth-child(1) {
+    width: 12%;
+}
+
+#content #categories tr>th:nth-child(2),
+tr>td:nth-child(2) {
+    width: 32%;
+}
+
+#content #categories tr>th:nth-child(3),
+tr>td:nth-child(3) {
+    width: 15%;
+}
+
+#content #categories tr>th:nth-child(3),
+tr>td:nth-child(4) {
+    width: 15%;
+}
+
+#content #categories tr>th:nth-child(3),
+tr>td:nth-child(5) {
+    width: 15%;
+}
+
+#content #categories tr>th {
+    text-align: left;
+}
+
+#content #categories #product-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#content #categories #product-name img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+#content #categories #button-action button {
+    background-color: #ffffff;
+    /* Màu nền */
+    border: 1px solid #ffffff;
+    /* Màu đường viền */
+    /* color: #000000; */
+    /* Màu chữ, bạn có thể điều chỉnh màu chữ tùy ý */
+    padding: 0px 15px;
+    /* Kích thước nút */
+    font-size: 16px;
+    /* Kích thước chữ */
+    cursor: pointer;
+}
+
+
+#content #categories tr>td {
+    border-top: 1px solid #E4E7E9;
+    padding: 10px 0px;
+}
+
+#content #categories tr>td p {
+    font-size: 16px;
+    font-weight: 550;
+    color: #667085;
+}
+
+#content #categories tr>td,
+#content #categories tr>th {
+    padding-left: 20px;
+}
+
+#content #categories #options{
+    margin-top: 20px;
+}
+
+
+#content #categories #options button {
+    align-items: center;
+    background-color: #1B60FF;
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    width: 200px;
+    height: 35px;
+}
+
+#content #categories #options button:hover,
+#content #categories #options button:focus {
+    background-color: #0A66C2;
+    color: #ffffff;
+}
+
+#content #categories #options button:active {
+    background: #0A66C2;
+    color: rgb(255, 255, 255, .7);
+}
+
+#content #categories #options button:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+#content #categories #pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#content #categories #pagination button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Để tạo hình tròn */
+    border: 2px solid #8B8E99;
+    /* Đường viền màu đen, bạn có thể thay đổi màu sắc tùy ý */
+    color: #8B8E99;
+    background-color: #ffffff;
+    /* Màu nền, bạn có thể thay đổi màu sắc tùy ý */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+#content #properties-list {
+    display: flex;
+    flex-direction: row;
+    gap:10%;
+}
+
+#content #properties-list div {
+    width: 45%;
+}
+
+
+#content #properties-list div table{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+#content #properties-list div tr>th:nth-child(1),
+tr>td:nth-child(1) {
+    width: 10%;
+}
+
+#content #properties-list div tr>th:nth-child(2),
+tr>td:nth-child(2) {
+    width: 25%;
+}
+
+#content #properties-list div tr>th:nth-child(3),
+tr>td:nth-child(3) {
+    width: 10%;
+}
+
+#content #properties-list div tr>th:nth-child(3),
+tr>td:nth-child(4) {
+    width: 15%;
+}
+
+#content #properties-list div tr>th:nth-child(3),
+tr>td:nth-child(5) {
+    width: 15%;
+}
+
+#content #properties-list div tr>th {
+    text-align: left;
+}
+
+#content #properties-list div #product-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#content #properties-list div #product-name img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+#content #properties-list div #button-action button {
+    background-color: #ffffff;
+    /* Màu nền */
+    border: 1px solid #ffffff;
+    /* Màu đường viền */
+    /* color: #000000; */
+    /* Màu chữ, bạn có thể điều chỉnh màu chữ tùy ý */
+    padding: 0px 5px;
+    /* Kích thước nút */
+    font-size: 16px;
+    /* Kích thước chữ */
+    cursor: pointer;
+}
+
+
+#content #properties-list div tr>td {
+    border-top: 1px solid #E4E7E9;
+    padding: 10px 0px;
+}
+
+#content #properties-list div tr>td p {
+    font-size: 16px;
+    font-weight: 550;
+    color: #667085;
+}
+
+#content #properties-list div tr>td,
+#content #properties-list div tr>th {
+    padding-left: 20px;
+}
+
+#content #properties-list div #options{
+    margin-top: 20px;
+}
+
+
+#content #properties-list div #options button {
+    align-items: center;
+    background-color: #1B60FF;
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    width: 200px;
+    height: 35px;
+}
+
+#content #properties-list div #options button:hover,
+#content #properties-list div #options button:focus {
+    background-color: #0A66C2;
+    color: #ffffff;
+}
+
+#content #properties-list div #options button:active {
+    background: #0A66C2;
+    color: rgb(255, 255, 255, .7);
+}
+
+#content #properties-list div #options button:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+#content #properties-list div #pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#content #properties-list div #pagination button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Để tạo hình tròn */
+    border: 2px solid #8B8E99;
+    /* Đường viền màu đen, bạn có thể thay đổi màu sắc tùy ý */
+    color: #8B8E99;
+    background-color: #ffffff;
+    /* Màu nền, bạn có thể thay đổi màu sắc tùy ý */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content .product-admin form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#content .product-admin form > div:nth-child(1) {
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+}
+
+#content .product-admin form > div:nth-child(2) {
+    width: 27%;
+    height: auto;
+}
+
+#content .product-admin form .panel-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+#content .product-admin form .panel-form p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1D1F2C;
+    margin-bottom: 20px;
+}
+
+#content .product-admin form .panel-form label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#content .product-admin form .panel-form input[type="text"] {
+    height: 40px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+#content .product-admin form .panel-form input[type="date"] {
+    height: 40px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+#content .product-admin form .panel-form input[type="file"] {
+    margin-bottom: 20px;
+}
+
+#content .product-admin form .panel-form textarea {
+    width: 100%;
+    line-height: 1;
+    padding: 10px;
+    border: 1px solid #E4E7E9;
+    border-radius: 10px;
+    resize: none;
+    outline: none;
+
+    
+}
+
+#content .product-admin form .panel-form select {
+    display: flex;
+    width: 100%;
+    padding: 10px 14px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid #E4E7E9;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+}
+
+#content .product-admin form .panel-form .hidden {
+    display: none;
+}
+
+#content .product-admin form .panel-form img {
+    width: 200px;
+    height: 200px;
+}
+
+
+#content .product-admin form button {
+    align-items: center;
+    background-color: #1B60FF;
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    width: 100%;
+    height: 35px;
+    margin-bottom: 24px;
+}
+
+#content .product-admin form button:hover,
+#content .product-admin form button:focus {
+    background-color: #0A66C2;
+    color: #ffffff;
+}
+
+#content .product-admin form button:active {
+    background: #0A66C2;
+    color: rgb(255, 255, 255, .7);
+}
+
+#content .product-admin form button:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
 }

@@ -21,13 +21,14 @@ public class Product {
     private String BrandName;
     private Boolean Status;
     private String Description;
+    private int Stock;
     
     
     public Product() {
         
     }
 
-    public Product(int ProductID, String ProductName, float Price, float Sale, String Image1, String Image2, String Image3, int BrandID, String BrandName, Boolean Status, String Description) {
+    public Product(int ProductID, String ProductName, float Price, float Sale, String Image1, String Image2, String Image3, int BrandID, String BrandName, Boolean Status, String Description, int Stock) {
         this.ProductID = ProductID;
         this.ProductName = ProductName;
         this.Price = Price;
@@ -39,6 +40,7 @@ public class Product {
         this.BrandName = BrandName;
         this.Status = Status;
         this.Description = Description;
+        this.Stock = Stock;
     }
 
     public int getProductID() {
@@ -143,6 +145,14 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" + "ProductID=" + ProductID + ", ProductName=" + ProductName + ", Price=" + Price + ", Sale=" + Sale + ", Image1=" + Image1 + ", Image2=" + Image2 + ", Image3=" + Image3 + ", BrandID=" + BrandID + ", BrandName=" + BrandName + ", Status=" + Status + ", Description=" + Description + '}';
+    }
+
+    public int getStock() {
+        return Stock;
+    }
+
+    public void setStock(int Stock) {
+        this.Stock = Stock;
     }
     
     

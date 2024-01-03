@@ -3,22 +3,67 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/PSneaker/src/java/controller/AddToCart.java</file>
-            <file>file:/D:/Project/PSneaker/src/java/controller/DeleteFromCart.java</file>
-            <file>file:/D:/Project/PSneaker/web/login.jsp</file>
-            <file>file:/D:/Project/PSneaker/web/assets/css/index.css</file>
+            <file>file:/D:/Project/PSneaker/web/admin/AddCategory.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminController.java</file>
             <file>file:/D:/Project/PSneaker/web/checkout.jsp</file>
-            <file>file:/D:/Project/PSneaker/src/java/DAO/CookieDAO.java</file>
-            <file>file:/D:/Project/PSneaker/src/java/controller/LoginControl.java</file>
-            <file>file:/D:/Project/PSneaker/web/index.jsp</file>
-            <file>file:/D:/Project/PSneaker/web/product.jsp</file>
-            <file>file:/D:/Project/PSneaker/src/java/controller/BrandControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/ColorAdminControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-customer.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/CartControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/ProductAdminController.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/CouponAdminControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-dashboard.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminProduct.java</file>
+            <file>file:/D:/Project/PSneaker/web/user.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/ProductDAO.java</file>
+            <file>file:/D:/Project/PSneaker/web/shop.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Color.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/DeleteFromCart.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/AdminDAO.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/UserDashBoardControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-order.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Brand.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/LogoutControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-login.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/CategoryAdminControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminOrder.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminCoupon.java</file>
             <file>file:/D:/Project/PSneaker/src/java/DAO/UserDAO.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminLogin.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-coupon.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/UserOrderHistoryControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/SizeAdminControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/UserControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/login.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/CheckoutControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/LoginControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Order.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/AddSize.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminCustomer.java</file>
+            <file>file:/D:/Project/PSneaker/web/about.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/BrandControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/AddProduct.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/SignupControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AddToCart.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/HomeControl.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/UserAccountDetailControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/assets/css/index.css</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminCategory.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminDashboard.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/AdminProperty.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-category.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/DAO/CookieDAO.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-product.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/index.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/admin/admin-property.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/admin/AddColor.jsp</file>
+            <file>file:/D:/Project/PSneaker/web/product.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Size.java</file>
+            <file>file:/D:/Project/PSneaker/web/admin/AddCoupon.jsp</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/Voucher.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/model/User.java</file>
             <file>file:/D:/Project/PSneaker/web/signup.jsp</file>
             <file>file:/D:/Project/PSneaker/web/cart.jsp</file>
-            <file>file:/D:/Project/PSneaker/src/java/DAO/ProductDAO.java</file>
             <file>file:/D:/Project/PSneaker/src/java/model/Product.java</file>
-            <file>file:/D:/Project/PSneaker/web/shop.jsp</file>
         </group>
     </open-files>
 </project-private>

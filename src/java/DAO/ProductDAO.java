@@ -46,7 +46,8 @@ public class ProductDAO {
                         brandId,
                         brandName,
                         rs.getBoolean(9),
-                        rs.getString(10)
+                        rs.getString(10),
+                        rs.getInt(11)
                 ));
             }
         } catch (Exception err) {
@@ -78,7 +79,53 @@ public class ProductDAO {
 
         return brandList;
     }
+    
+    public List<Color> getListColor() {
+        PreparedStatement ps = null;
+        ResultSet br = null;
+        List<Color> ColorList = new ArrayList<>();
+        String query = "select * from Colors";
 
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            br = ps.executeQuery();
+            while (br.next()) {
+                ColorList.add(new Color(
+                        br.getInt(1),
+                        br.getString(2)
+                ));
+            }
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+
+        return ColorList;
+    }
+
+    public List<Size> getListSize() {
+        PreparedStatement ps = null;
+        ResultSet br = null;
+        List<Size> SizeList = new ArrayList<>();
+        String query = "select * from Size";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            br = ps.executeQuery();
+            while (br.next()) {
+                SizeList.add(new Size(
+                        br.getInt(1),
+                        br.getInt(2)
+                ));
+            }
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+
+        return SizeList;
+    }
+    
     public String findBrandNameById(int BrandID) {
         PreparedStatement ps = null;
         ResultSet brand = null;
@@ -115,6 +162,43 @@ public class ProductDAO {
 
         return brandName;
     }
+    
+    public Brand getBrandById(int BrandID) {
+        PreparedStatement ps = null;
+        ResultSet brand = null;
+        String query = "SELECT * FROM Brand WHERE BrandID = ?";
+        
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, BrandID);
+            brand = ps.executeQuery();
+
+            if (brand.next()) {
+                return new Brand(brand.getInt(1), brand.getString(2));
+            }
+        } catch (Exception err) {
+            System.out.println(err);
+        } finally {
+            try {
+                // Close the resources in reverse order of their creation to avoid potential issues
+                if (brand != null) {
+                    brand.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle exceptions during closing resources
+            }
+        }
+
+        return null;
+    }
 
     public List<Product> getProductByBrandID(int BrandID) {
         PreparedStatement ps = null;
@@ -142,7 +226,8 @@ public class ProductDAO {
                         brandId,
                         brandName,
                         rs.getBoolean(9),
-                        rs.getString(10)
+                        rs.getString(10),
+                        rs.getInt(11)
                 ));
             }
         } catch (Exception err) {
@@ -177,7 +262,8 @@ public class ProductDAO {
                         brandId,
                         brandName,
                         rs.getBoolean(9),
-                        rs.getString(10)
+                        rs.getString(10),
+                        rs.getInt(11)
                 );
             }
         } catch (Exception err) {
@@ -320,6 +406,43 @@ public class ProductDAO {
         }
 
         return Color;
+    }
+    
+    public Color getColorByID(int ColorID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Colors WHERE ColorID = ?";
+
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ColorID);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Color(rs.getInt(1),rs.getString(2));
+            }
+        } catch (Exception err) {
+            System.out.println(err);
+        } finally {
+            try {
+                // Close the resources in reverse order of their creation to avoid potential issues
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle exceptions during closing resources
+            }
+        }
+
+        return null;
     }
 
     public List<Color> getColorByProductID(int ProductID) {
