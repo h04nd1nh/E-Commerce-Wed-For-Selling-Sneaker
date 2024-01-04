@@ -71,7 +71,7 @@
                     <div id="product-description-origin">
                         <span>ID: ${Product.getProductID()}</span>
                         <input type="hidden" name="productid" id="productid" value="${Product.getProductID()}">
-                        <span>Availability: <span class="product-description-availability">${Product.getStatus() ? "In Stock" : "No"}</span></span>
+                        <span>Availability: <span class="product-description-availability">${Product.getStock() != 0 ? "In Stock" : "Out of stock"}</span></span>
                         <span>Brand: ${Product.getBrandName()}</span>
                         <span>Category: ${Product.getBrandName()}</span>
                     </div>
@@ -141,29 +141,36 @@
                         <button onclick="window.location.href = '${pageContext.request.contextPath}/login'">Login now to order</button>
                     </c:if>
                     <c:if test="${cookie['datl'] != null}">
-                        <button onclick="addToCart()">Add to cart</button>
-                        <button onclick="buyNow()">Buy now</button>
-                        <script>
-                            function addToCart() {
-                                var productID = document.getElementById("productid").value;
-                                var selectedColor = document.getElementById("color").value;
-                                var selectedSize = document.getElementById("size").value;
-                                var quantity = document.getElementById("quantityValue").value;
+                        <c:if test="${Product.getStock() == 0}">
+                            <button style="background-color: gray;border: 1px solid gray">Out of stock</button>
+                        </c:if>
 
-                                window.location.href = '${pageContext.request.contextPath}/AddToCart?productid=' + productID + '&color=' + selectedColor + '&size=' + selectedSize + '&quantity=' + quantity;
-                                // Thực hiện các hành động cần thiết khi click vào nút "Add to cart"
+                        <c:if test="${Product.getStock() != 0}">
+                            <button onclick="addToCart()">Add to cart</button>
+                            <button onclick="buyNow()">Buy now</button>
+                            <script>
+                                function addToCart() {
+                                    var productID = document.getElementById("productid").value;
+                                    var selectedColor = document.getElementById("color").value;
+                                    var selectedSize = document.getElementById("size").value;
+                                    var quantity = document.getElementById("quantityValue").value;
 
-                            }
+                                    window.location.href = '${pageContext.request.contextPath}/AddToCart?productid=' + productID + '&color=' + selectedColor + '&size=' + selectedSize + '&quantity=' + quantity;
+                                    // Thực hiện các hành động cần thiết khi click vào nút "Add to cart"
 
-                            function buyNow() {
-                                var productID = document.getElementById("productid").value;
-                                var selectedColor = document.getElementById("color").value;
-                                var selectedSize = document.getElementById("size").value;
-                                var quantity = document.getElementById("quantityValue").value;
+                                }
 
-                                window.location.href = '${pageContext.request.contextPath}/checkout?productid=' + productID + '&color=' + selectedColor + '&size=' + selectedSize + '&quantity=' + quantity;
-                            }
-                        </script>
+                                function buyNow() {
+                                    var productID = document.getElementById("productid").value;
+                                    var selectedColor = document.getElementById("color").value;
+                                    var selectedSize = document.getElementById("size").value;
+                                    var quantity = document.getElementById("quantityValue").value;
+
+                                    window.location.href = '${pageContext.request.contextPath}/checkout?productid=' + productID + '&color=' + selectedColor + '&size=' + selectedSize + '&quantity=' + quantity;
+                                }
+                            </script>
+                        </c:if>
+
                     </c:if>
                 </div>
                 <!--            </form>-->

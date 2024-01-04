@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/Project/PSneaker/web/admin/AddCategory.jsp</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/AdminController.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/OrderControl.java</file>
             <file>file:/D:/Project/PSneaker/web/checkout.jsp</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/ColorAdminControl.java</file>
             <file>file:/D:/Project/PSneaker/web/admin/admin-customer.jsp</file>
@@ -19,6 +20,7 @@
             <file>file:/D:/Project/PSneaker/src/java/model/Color.java</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/DeleteFromCart.java</file>
             <file>file:/D:/Project/PSneaker/src/java/DAO/AdminDAO.java</file>
+            <file>file:/D:/Project/PSneaker/src/java/controller/OrderDetailControl.java</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/UserDashBoardControl.java</file>
             <file>file:/D:/Project/PSneaker/web/admin/admin-order.jsp</file>
             <file>file:/D:/Project/PSneaker/src/java/model/Brand.java</file>
@@ -41,6 +43,7 @@
             <file>file:/D:/Project/PSneaker/src/java/controller/AdminCustomer.java</file>
             <file>file:/D:/Project/PSneaker/web/about.jsp</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/BrandControl.java</file>
+            <file>file:/D:/Project/PSneaker/web/orderdetail.jsp</file>
             <file>file:/D:/Project/PSneaker/web/admin/AddProduct.jsp</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/SignupControl.java</file>
             <file>file:/D:/Project/PSneaker/src/java/controller/AddToCart.java</file>

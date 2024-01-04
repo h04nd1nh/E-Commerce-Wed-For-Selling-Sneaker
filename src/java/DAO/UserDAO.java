@@ -246,8 +246,9 @@ public class UserDAO {
         return null;
     }
 
-    public void OrderProceed(int UserID, float Total, String Address, String Status, String Note, String FullName, String Email, String Phone, int VoucherID, float PaymentAmmout, List<CartItem> CartItems) {
-
+    public Boolean OrderProceed(int UserID, float Total, String Address, String Status, String Note, String FullName, String Email, String Phone, int VoucherID, float PaymentAmmout, List<CartItem> CartItems) {
+        
+        
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSS");
         String formattedTime = currentTime.format(formatter);
@@ -265,6 +266,31 @@ public class UserDAO {
         }
 
         String OrderID = randomString.toString();
+        
+        
+        for (CartItem item : CartItems) {
+
+            try {
+                String query = "Select [Stock] from [Product] WHERE [ProductID] = ?";
+                PreparedStatement ps = null;
+                ResultSet rs = null;
+                conn = new DBContext().getConnection();
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, item.getProductID());
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next()) {
+                    if (rs.getInt(1) < item.getQuantity()) {
+                        return false;
+                    }
+                }
+
+            } catch (Exception err) {
+                System.out.println(err);
+            }
+
+        }
 
         try {
             String query = "insert into [Order]\n" + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -312,10 +338,31 @@ public class UserDAO {
                 ps.setInt(5, item.getSizeID());
                 ps.setInt(6, item.getColorID());
                 ps.executeUpdate();
+
             } catch (Exception err) {
                 System.out.println(err);
             }
+
         }
+
+        for (CartItem item : CartItems) {
+
+            try {
+                PreparedStatement ps1 = null;
+                String queryupdate = "UPDATE [Product] SET [Stock] = [Stock] - ?  WHERE [ProductID] = ?";
+                ps1 = conn.prepareStatement(queryupdate);
+                ps1.setInt(1, item.getQuantity());
+                ps1.setInt(2, item.getProductID());
+                ps1.executeUpdate();
+
+            } catch (Exception err) {
+                System.out.println(err);
+            }
+
+        }
+        
+        return true;
+
     }
 
     public List<Order> getAllOrderByUserID(int UserID) {

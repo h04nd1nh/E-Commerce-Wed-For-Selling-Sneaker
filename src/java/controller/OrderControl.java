@@ -160,10 +160,32 @@ public class OrderControl extends HttpServlet {
         String UserName = parts[0];
         UserID = UserDAO.getUserIDByUserName(UserName);
         Status = "Pending";
-        UserDAO.OrderProceed(UserID, Float.parseFloat(Total), Address, Status, Note, FullName, Email, PhoneNumber, VoucherID, Float.parseFloat(PaymentAmount), CartItems);
+        Boolean Check = UserDAO.OrderProceed(UserID, Float.parseFloat(Total), Address, Status, Note, FullName, Email, PhoneNumber, VoucherID, Float.parseFloat(PaymentAmount), CartItems);
 
-        // load lại trang trước đó
-        response.sendRedirect("home");
+        if (Check == true) {
+            response.setContentType("text/html;charset=UTF-8");
+
+            // Mã JavaScript để hiển thị thông báo và chuyển hướng
+            String alertScript = "<script>"
+                    + "alert('Order Succesfully!');"
+                    + "window.location.href='home';"
+                    + "</script>";
+
+            // Thêm mã JavaScript vào trang
+            response.getWriter().write(alertScript);
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+
+            // Mã JavaScript để hiển thị thông báo và chuyển hướng
+            String alertScript = "<script>"
+                    + "alert('Order Failed, Maybe some products in your shopping cart are out of stock');"
+                    + "window.location.href='home';"
+                    + "</script>";
+
+            // Thêm mã JavaScript vào trang
+            response.getWriter().write(alertScript);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -71,6 +71,16 @@ public class ProductAdminController extends HttpServlet {
             AdminDAO AdminDAO = new AdminDAO();
             AdminDAO.DeleteProductByID(Integer.parseInt(ProductID));
             String referer = request.getHeader("Referer");
+            response.setContentType("text/html;charset=UTF-8");
+
+            // Mã JavaScript để hiển thị thông báo và chuyển hướng
+            String alertScript = "<script>"
+                    + "alert('Order Failed, Maybe some products in your shopping cart are out of stock');"
+                    + "window.location.href='home';"
+                    + "</script>";
+
+            // Thêm mã JavaScript vào trang
+            response.getWriter().write(alertScript);
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         } else {
             if (ProductID == null) {

@@ -74,8 +74,17 @@ public class AddToCart extends HttpServlet {
 
         // Kiểm tra xem nó có giá trị không
         if (referer != null && !referer.isEmpty()) {
-            //load lại trang trước đó
-            response.sendRedirect(referer);
+            response.setContentType("text/html;charset=UTF-8");
+
+        // Mã JavaScript để hiển thị thông báo và chuyển hướng
+        String alertScript = "<script>"
+                            + "alert('Add to cart succesfully!');"
+                            + "window.location.href='shop';"
+                            + "</script>";
+
+        // Thêm mã JavaScript vào trang
+        response.getWriter().write(alertScript);
+
         } else {
             // Nếu không chuyển hướng về shop
             response.sendRedirect("shop");
