@@ -75,7 +75,7 @@
                             <div class="panel-form">
                                 <p>General Information</p>
                                 <label for="colorname">Color Name</label>
-                                <input type="text" name="colorname" id="colorname" placeholder="Type color name here..." value="${Color.getColor()}">
+                                <input type="text" name="colorname" id="colorname" placeholder="Type color name here..." value="${Color}">
                             </div>
 
                         </div>

@@ -15,6 +15,7 @@ import DAO.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
@@ -59,7 +60,11 @@ public class ProductAdminController extends HttpServlet {
 
         ProductDAO ProductDAO = new ProductDAO();
         List<Brand> ListBrand = ProductDAO.getListBrand();
+        List<Size> ListSize = ProductDAO.getListSize();
+        List<Color> ListColor = ProductDAO.getListColor();
         request.setAttribute("ListBrand", ListBrand);
+        request.setAttribute("ListSize", ListSize);
+        request.setAttribute("ListColor", ListColor);
 
         String action = request.getParameter("action");
         if (action != null) {
@@ -73,8 +78,28 @@ public class ProductAdminController extends HttpServlet {
                 request.getRequestDispatcher("AddProduct.jsp").forward(request, response);
             } else {
                 Product Product = ProductDAO.getProductByID(Integer.parseInt(ProductID));
+                List<Size> ListSizeValid = ProductDAO.getSizeByProductID(Integer.parseInt(ProductID));
+                List<Color> ListColorValid = ProductDAO.getColorByProductID(Integer.parseInt(ProductID));
+                
+                
+                List<Integer> ListSizeEnable = new ArrayList<>();
+                for (Size size : ListSizeValid) {
+
+                    ListSizeEnable.add(size.getSizeID());
+                }
+                
+                List<Integer> ListColorEnable = new ArrayList<>();
+                for (Color color : ListColorValid) {
+
+                    ListColorEnable.add(color.getColorID());
+                }
+                
+               
+                
                 request.setAttribute("type", "Edit");
                 request.setAttribute("Product", Product);
+                request.setAttribute("ListSizeEnable", ListSizeEnable);
+                request.setAttribute("ListColorEnable", ListColorEnable);
                 request.getRequestDispatcher("AddProduct.jsp").forward(request, response);
             }
         }
@@ -107,6 +132,8 @@ public class ProductAdminController extends HttpServlet {
         String PathImage1 = null;
         String PathImage2 = null;
         String PathImage3 = null;
+        String[] colors = request.getParameterValues("color");
+        String[] sizes = request.getParameterValues("size");
 
         if (Image1.length() != 0) {
             PathImage1 = saveImage(Image1, request);
@@ -122,11 +149,15 @@ public class ProductAdminController extends HttpServlet {
         Product newProduct = new Product(1, ProductName, Float.parseFloat(Price), Float.parseFloat(Sale), PathImage1, PathImage2, PathImage3, Integer.parseInt(brandID), BrandName, true, Description, Integer.parseInt(Quantity));
 
         if (ProductID == null) {
-            AdminDAO.AddProduct(newProduct);
+            int newProductID = AdminDAO.AddProduct(newProduct);
+            AdminDAO.UpdateProductColor(colors, newProductID);
+            AdminDAO.UpdateProductSize(sizes, newProductID);
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         } else {
             AdminDAO.UpdateProductByID(Integer.parseInt(ProductID), newProduct);
+            AdminDAO.UpdateProductColor(colors, Integer.parseInt(ProductID));
+            AdminDAO.UpdateProductSize(sizes, Integer.parseInt(ProductID));
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         }

@@ -66,8 +66,8 @@
                         <div class="tag-info">
                             <div>
                                 <p>Todays Sales</p>
-                                <span>7.000.000đ</span>
-                                <p>We have sold 123 items</p>
+                                <span>1.230.000đ</span>
+                                <p>We have sold 3 items</p>
                             </div>
                             <i class="fa-solid fa-calendar-day"></i>
                         </div>

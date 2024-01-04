@@ -56,10 +56,11 @@ public class CategoryAdminControl extends HttpServlet {
 
         String action = request.getParameter("action");
         if (action != null) {
-//            AdminDAO AdminDAO = new AdminDAO();
-//            AdminDAO.DeleteProductByID(Integer.parseInt(brandID));
-//            String referer = request.getHeader("Referer");
-//            response.sendRedirect(referer != null ? referer : request.getContextPath());
+            AdminDAO AdminDAO = new AdminDAO();
+            AdminDAO.DeleteBrandByID(Integer.parseInt(brandID));
+            String referer = request.getHeader("Referer");
+            response.sendRedirect(referer != null ? referer : request.getContextPath());
+            
         } else {
             if (brandID == null) {
                 request.setAttribute("type", "Add");
@@ -94,9 +95,9 @@ public class CategoryAdminControl extends HttpServlet {
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         } else {
-            Brand NewBrand = new Brand(1,category);
+            Brand NewBrand = new Brand(Integer.parseInt(categoryID),category);
             AdminDAO AdminDAO = new AdminDAO();
-            AdminDAO.AddBrand(NewBrand);
+            AdminDAO.UpdateBrand(NewBrand);
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         }

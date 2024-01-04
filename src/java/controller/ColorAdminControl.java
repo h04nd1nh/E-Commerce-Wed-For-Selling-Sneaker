@@ -31,7 +31,7 @@ public class ColorAdminControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,21 +47,27 @@ public class ColorAdminControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String colorID = request.getParameter("id");
-        String color = request.getParameter("colorname");
-        
-        if (colorID == null) {
-            Color NewColor = new Color(1,color);
+
+        ProductDAO ProductDAO = new ProductDAO();
+
+        String action = request.getParameter("action");
+        if (action != null) {
             AdminDAO AdminDAO = new AdminDAO();
-            AdminDAO.AddColor(NewColor);
+            AdminDAO.DeleteColorByID(Integer.parseInt(colorID));
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         } else {
-            Color NewColor = new Color(1,color);
-            AdminDAO AdminDAO = new AdminDAO();
-            AdminDAO.AddColor(NewColor);
-            String referer = request.getHeader("Referer");
-            response.sendRedirect(referer != null ? referer : request.getContextPath());
+            if (colorID == null) {
+                request.setAttribute("type", "Add");
+                request.getRequestDispatcher("AddColor.jsp").forward(request, response);
+            } else {
+                String Color = ProductDAO.getColorByColorID(Integer.parseInt(colorID));
+                request.setAttribute("type", "Edit");
+                request.setAttribute("Color", Color);
+                request.getRequestDispatcher("AddColor.jsp").forward(request, response);
+            }
         }
+
     }
 
     /**
@@ -75,7 +81,22 @@ public class ColorAdminControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String colorID = request.getParameter("id");
+        String color = request.getParameter("colorname");
+
+        if (colorID == null) {
+            Color NewColor = new Color(1, color);
+            AdminDAO AdminDAO = new AdminDAO();
+            AdminDAO.AddColor(NewColor);
+            String referer = request.getHeader("Referer");
+            response.sendRedirect(referer != null ? referer : request.getContextPath());
+        } else {
+            Color NewColor = new Color(Integer.parseInt(colorID), color);
+            AdminDAO AdminDAO = new AdminDAO();
+            AdminDAO.UpdateColor(NewColor);
+            String referer = request.getHeader("Referer");
+            response.sendRedirect(referer != null ? referer : request.getContextPath());
+        }
     }
 
     /**

@@ -52,10 +52,10 @@ public class SizeAdminControl extends HttpServlet {
 
         String action = request.getParameter("action");
         if (action != null) {
-//            AdminDAO AdminDAO = new AdminDAO();
-//            AdminDAO.DeleteProductByID(Integer.parseInt(brandID));
-//            String referer = request.getHeader("Referer");
-//            response.sendRedirect(referer != null ? referer : request.getContextPath());
+            AdminDAO AdminDAO = new AdminDAO();
+            AdminDAO.DeleteSizeByID(Integer.parseInt(sizeID));
+            String referer = request.getHeader("Referer");
+            response.sendRedirect(referer != null ? referer : request.getContextPath());
         } else {
             if (sizeID == null) {
                 request.setAttribute("type", "Add");
@@ -92,7 +92,7 @@ public class SizeAdminControl extends HttpServlet {
         } else {
             Size NewSize = new Size(Integer.parseInt(sizeID),Integer.parseInt(Size));
             AdminDAO AdminDAO = new AdminDAO();
-            AdminDAO.AddSize(NewSize);
+            AdminDAO.UpdateSize(NewSize);
             String referer = request.getHeader("Referer");
             response.sendRedirect(referer != null ? referer : request.getContextPath());
         }

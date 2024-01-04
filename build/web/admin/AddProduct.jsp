@@ -95,6 +95,83 @@
                             </div>
 
                             <div class="panel-form">
+                                <p>Color</p>
+                                <style>
+                                    .c {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                    }
+                                    .checkbox-container {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                    }
+
+                                    .checkbox-container input[type="checkbox"] {
+                                        margin-right: 5px;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    .checkbox-container label {
+                                        margin: 0;
+                                    }
+                                </style>
+                                <div class="c">
+
+                                    <c:forEach items="${ListColor}" var="color">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="${color.getColorID()}" name="color" value="${color.getColorID()}">
+                                            <label for="checkbox1">${color.getColor()}</label>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="panel-form">
+                                <p>Size</p>
+                                <style>
+                                    .c {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                    }
+                                    .checkbox-container {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                    }
+
+                                    .checkbox-container input[type="checkbox"] {
+                                        margin-right: 5px;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    .checkbox-container label {
+                                        margin: 0;
+                                    }
+                                </style>
+                                <div class="c">
+                                    <c:forEach items="${ListSize}" var="size">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="${size.getSizeID()}" name="size" value="${size.getSizeID()}">
+                                            <label for="checkbox1">${size.getSize()}</label>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="panel-form">
                                 <p>Image</p>
                                 <label for="brand">Image 1</label>
                                 <img id="uploadedImage1" src="" alt="Uploaded Image" class="hidden">
@@ -154,9 +231,87 @@
                                 <label for="brand">Brand</label>
                                 <select name="brand" id="brand">
                                     <c:forEach items="${ListBrand}" var="brand">
-                                        <option value="${brand.getBrandID()}" ${'1' == brand.getBrandID() ? 'selected' : ''} ${'2' == brand.getBrandID() ? 'selected' : ''} ${'3' == brand.getBrandID() ? 'selected' : ''}>${brand.getBrandName()}</option>
+                                        <option value="${brand.getBrandID()}" ${brand.getBrandID() eq Product.getBrandID() ? 'selected' : ''}>${brand.getBrandName()}</option>
                                     </c:forEach>
                                 </select>
+                            </div>
+                            
+                            <div class="panel-form">
+                                <p>Color</p>
+                                <style>
+                                    .c {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                    }
+                                    .checkbox-container {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                    }
+
+                                    .checkbox-container input[type="checkbox"] {
+                                        margin-right: 5px;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    .checkbox-container label {
+                                        margin: 0;
+                                    }
+                                </style>
+                                <div class="c">
+
+                                    <c:forEach items="${ListColor}" var="color">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="${color.getColorID()}" name="color" value="${color.getColorID()}" ${ListColorEnable.contains(color.getColorID()) ? 'checked' : ''}>
+                                            <label for="checkbox1">${color.getColor()}</label>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="panel-form">
+                                <p>Size</p>
+                                <style>
+                                    .c {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                    }
+                                    .checkbox-container {
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                    }
+
+                                    .checkbox-container input[type="checkbox"] {
+                                        margin-right: 5px;
+                                        margin-bottom: 5px;
+                                    }
+
+                                    .checkbox-container label {
+                                        margin: 0;
+                                    }
+                                </style>
+                                <div class="c">
+                                    <c:forEach items="${ListSize}" var="size">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" id="${size.getSizeID()}" name="size" value="${size.getSizeID()}"  ${ListSizeEnable.contains(size.getSizeID()) ? 'checked' : ''}>
+                                            <label for="checkbox1">${size.getSize()}</label>
+                                            
+                                        </div>
+                                    </c:forEach>
+                                </div>
+
+
+
                             </div>
 
                             <div class="panel-form">
@@ -188,7 +343,7 @@
                 const imageInputs = document.querySelectorAll('input[type="file"]');
                 const base64Inputs = document.querySelectorAll('input[type="hidden"][id^="base64Image"]');
                 const uploadedImages = document.querySelectorAll('img[id^="uploadedImage"]');
-                
+
                 imageInputs.forEach((input, index) => {
                     input.addEventListener('change', (event) => {
                         const file = event.target.files[0];
@@ -200,7 +355,7 @@
                                 uploadedImages[index].src = imageUrl;
                                 base64Inputs[index].value = imageUrl;
                                 console.log(base64Inputs[index]);
-                                
+
                             };
                             reader.readAsDataURL(file);
                         } else {
@@ -210,7 +365,7 @@
                         }
                     });
 
-                    
+
                 });
             });
         </script>

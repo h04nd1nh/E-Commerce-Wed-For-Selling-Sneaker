@@ -8,6 +8,7 @@ import context.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -173,34 +174,34 @@ public class AdminDAO {
     }
 
     public Voucher getVoucherById(int VoucherID) {
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    String query = "select * from [Voucher] WHERE VoucherID = ?";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "select * from [Voucher] WHERE VoucherID = ?";
 
-    try {
-        conn = new DBContext().getConnection();
-        ps = conn.prepareStatement(query);
-        ps.setInt(1, VoucherID);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            // Lấy timestamp từ cột datetime2
-            Timestamp startDateTimestamp = rs.getTimestamp("StartDate");
-            Timestamp expiryTimestamp = rs.getTimestamp("Expiry");
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, VoucherID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                // Lấy timestamp từ cột datetime2
+                Timestamp startDateTimestamp = rs.getTimestamp("StartDate");
+                Timestamp expiryTimestamp = rs.getTimestamp("Expiry");
 
-            // Chuyển đổi timestamp thành chuỗi theo định dạng mong muốn
-            String startDateString = convertTimestampToString(startDateTimestamp);
-            String expiryDateString = convertTimestampToString(expiryTimestamp);
+                // Chuyển đổi timestamp thành chuỗi theo định dạng mong muốn
+                String startDateString = convertTimestampToString(startDateTimestamp);
+                String expiryDateString = convertTimestampToString(expiryTimestamp);
 
-            // Tạo đối tượng Voucher với các giá trị đã chuyển đổi
-            return new Voucher(rs.getInt(1), rs.getString(2),
-                    rs.getInt(3), startDateString, expiryDateString);
+                // Tạo đối tượng Voucher với các giá trị đã chuyển đổi
+                return new Voucher(rs.getInt(1), rs.getString(2),
+                        rs.getInt(3), startDateString, expiryDateString);
+            }
+        } catch (Exception err) {
+            System.out.println(err);
         }
-    } catch (Exception err) {
-        System.out.println(err);
-    }
 
-    return null;
-}
+        return null;
+    }
 
     public List<User> getListUser() {
         PreparedStatement ps = null;
@@ -236,7 +237,8 @@ public class AdminDAO {
         return list;
     }
 
-    public void AddProduct(Product product) {
+    public int AddProduct(Product product) {
+        int generatedProductId = -1;
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query = "INSERT INTO Product (ProductName, Price, Sale, Image1, Image2, Image3, BrandID, Status, Description, Stock) "
@@ -244,7 +246,7 @@ public class AdminDAO {
 
         try {
             conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
+            ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, product.getProductName());
             ps.setFloat(2, product.getPrice());
             ps.setFloat(3, product.getSale());
@@ -256,10 +258,19 @@ public class AdminDAO {
             ps.setString(9, product.getDescription());
             ps.setInt(10, product.getStock());
             ps.executeUpdate();
+            
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        return generatedKeys.getInt(1); // Lấy ID được sinh ra
+                    }
+                }
+            
 
         } catch (Exception err) {
             System.out.println(err);
         }
+        
+        return 0;
     }
 
     public void UpdateProductByID(int productID, Product updatedProduct) {
@@ -398,7 +409,7 @@ public class AdminDAO {
             return null;
         }
     }
-    
+
     public void AddBrand(Brand brand) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -408,13 +419,13 @@ public class AdminDAO {
             String query = "INSERT INTO Brand (BrandName) VALUES (?)";
             ps = conn.prepareStatement(query);
             ps.setString(1, brand.getBrandName());
-            
+
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public void AddColor(Color color) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -424,13 +435,13 @@ public class AdminDAO {
             String query = "INSERT INTO Colors (Color) VALUES (?)";
             ps = conn.prepareStatement(query);
             ps.setString(1, color.getColor());
-            
+
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public void AddSize(Size size) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -440,12 +451,245 @@ public class AdminDAO {
             String query = "INSERT INTO Size (Size) VALUES (?)";
             ps = conn.prepareStatement(query);
             ps.setInt(1, size.getSize());
-            
+
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public Boolean checkValidBrand(int BrandID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Product WHERE BrandID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, BrandID);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return false;
+            }
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+
+        return true;
+    }
+
+    public Boolean checkValidColor(int ColorID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM ProductColor WHERE ColorID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ColorID);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return false;
+            }
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+
+        return true;
+    }
+
+    public Boolean checkValidSize(int SizeID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM ProductSizes WHERE SizeID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, SizeID);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return false;
+            }
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+
+        return true;
+    }
+
+    public void DeleteBrandByID(int BrandID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "DELETE FROM Brand WHERE BrandID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, BrandID);
+            ps.executeUpdate();
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void DeleteColorByID(int ColorID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "DELETE FROM Colors WHERE ColorID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ColorID);
+            ps.executeUpdate();
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void DeleteSizeByID(int SizeID) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "DELETE FROM Size WHERE SizeID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, SizeID);
+            ps.executeUpdate();
+
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void UpdateBrand(Brand brand) {
+        PreparedStatement ps = null;
+        String query = "UPDATE Brand SET BrandName = ? WHERE BrandID = ?";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, brand.getBrandName());
+            ps.setInt(2, brand.getBrandID());
+
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void UpdateColor(Color color) {
+        PreparedStatement ps = null;
+        String query = "UPDATE Colors SET Color = ? WHERE ColorID = ?";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, color.getColor());
+            ps.setInt(2, color.getColorID());
+
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void UpdateSize(Size size) {
+        PreparedStatement ps = null;
+        String query = "UPDATE Size SET Size = ? WHERE SizeID = ?";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, size.getSize());
+            ps.setInt(2, size.getSizeID());
+
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
+    public void UpdateProductColor(String[] colorID, int ProductID) {
+        PreparedStatement ps = null;
+        
+
+        try {
+            String query = "DELETE FROM [ProductColor] WHERE [ProductID] = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ProductID);
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+        
+        try {
+            String query = "INSERT INTO [ProductColor] ([ProductID], [ColorID]) VALUES (?, ?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            try {
+                for (String color : colorID) {
+                    try {
+                        int colorIDInt = Integer.parseInt(color);
+                        ps.setInt(1, ProductID);
+                        ps.setInt(2, colorIDInt);
+                        ps.executeUpdate();
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid colorID: " + colorID);
+                    }
+                }
+            } catch (Exception err) {
+                System.out.println(err);
+            }
+            ps.setInt(1, ProductID);
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
     }
     
-    
+    public void UpdateProductSize(String[] sizeID, int ProductID) {
+        PreparedStatement ps = null;
+        
+
+        try {
+            String query = "DELETE FROM [ProductSizes] WHERE [ProductID] = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, ProductID);
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+        
+        try {
+            String query = "INSERT INTO [ProductSizes] ([ProductID], [SizeID]) VALUES (?, ?)";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            try {
+                for (String size : sizeID) {
+                    try {
+                        ps.setInt(1, ProductID);
+                        ps.setInt(2, Integer.parseInt(size));
+                        ps.executeUpdate();
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid colorID: " + sizeID);
+                    }
+                }
+            } catch (Exception err) {
+                System.out.println(err);
+            }
+            ps.setInt(1, ProductID);
+            ps.executeUpdate();
+        } catch (Exception err) {
+            System.out.println(err);
+        }
+    }
+
 }
